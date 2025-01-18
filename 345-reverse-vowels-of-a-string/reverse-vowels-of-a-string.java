@@ -1,31 +1,37 @@
 class Solution {
-        boolean isVowel(char c) {
-        return c == 'a' || c == 'i' || c == 'e' || c == 'o' || c == 'u'
-            || c == 'A' || c == 'I' || c == 'E' || c == 'O' || c == 'U';
-    }
-
-    void swap(char[] chars, int x, int y) {
-        char temp = chars[x];
-        chars[x] = chars[y];
-        chars[y] = temp;
-    }
-    
     public String reverseVowels(String s) {
-        int start = 0;
-        int end = s.length() - 1;
-        char[] sChar = s.toCharArray();
+        Set<Character> vowSet = new HashSet<>();
+        vowSet.add('a');
+        vowSet.add('e');
+        vowSet.add('i');
+        vowSet.add('o');
+        vowSet.add('u');
+        vowSet.add('A');
+        vowSet.add('E');
+        vowSet.add('I');
+        vowSet.add('O');
+        vowSet.add('U');
+        int l=0;
+        int r=s.length()-1;
+        char[] str = s.toCharArray();
+    while (l<r){
 
-        while (start < end) {
-            while (start < s.length () && !isVowel(sChar[start])) {
-                start++;
+            while (l<s.length()&&!vowSet.contains(str[l])) {
+                l++;
             }
-            while (end >= 0 && !isVowel(sChar[end])) {
-                end--;
+
+            while (r>=0&&!vowSet.contains(str[r])) {
+                r--;
             }
-            if (start < end) {
-                swap(sChar, start++, end--);
+            if(l<r){
+                char x=str[l];
+                str[l]=str[r];
+                str[r]=x;
+                l++;
+                r--;
             }
+
         }
-        return new String(sChar);
+        return new String(str);
     }
 }
