@@ -4,10 +4,11 @@ class Solution {
         for(String s:strs){
             char[] ch = s.toCharArray();
             Arrays.sort(ch);
-            if(!groupMap.containsKey(new String(ch))){
-                groupMap.put(new String(ch),new ArrayList<>());
+            String key = new String(ch);
+            if(!groupMap.containsKey(key)){
+                groupMap.put(key,new ArrayList<>());
             }
-            groupMap.get(new String(ch)).add(s);
+            groupMap.get(key).add(s);
         }
         return new ArrayList<>(groupMap.values());
     }
