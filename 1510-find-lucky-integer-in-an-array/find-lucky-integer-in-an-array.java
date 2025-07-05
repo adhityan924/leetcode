@@ -6,9 +6,8 @@ class Solution {
         }
         int res =-1;
         for(int i:soln.keySet()){
-            int temp = soln.get(i);
-            if((i==temp)&&(temp>res)){
-                res=temp;
+            if((i==soln.get(i))&&(soln.get(i)>res)){
+                res=i;
             }
         }
         return res;
