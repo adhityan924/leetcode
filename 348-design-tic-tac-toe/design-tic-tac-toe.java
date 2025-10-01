@@ -1,0 +1,46 @@
+class TicTacToe {
+
+    int[] rows;
+    int[] cols;
+    int antiDiag;
+    int dia;
+    int n;
+
+    public TicTacToe(int n) {
+        rows= new int[n];
+        cols= new int[n];
+        this.n=n;
+
+    }
+    
+    public int move(int row, int col, int player) {
+
+        int move;
+        if(player==1){
+            move=1;
+        }else{
+            move=-1;
+        }
+
+        rows[row]+=move;
+        cols[col]+=move;
+        if(row==col){
+            dia+=move;
+        }
+        if(col==(n-row-1)){
+            antiDiag+=move;
+        }
+
+        if(Math.abs(rows[row])==n || Math.abs(cols[col])==n || Math.abs(dia)==n || Math.abs(antiDiag)==n){
+            return player;
+        }
+        return 0;
+        
+    }
+}
+
+/**
+ * Your TicTacToe object will be instantiated and called as such:
+ * TicTacToe obj = new TicTacToe(n);
+ * int param_1 = obj.move(row,col,player);
+ */
