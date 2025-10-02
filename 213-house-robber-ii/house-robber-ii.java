@@ -12,16 +12,26 @@ class Solution {
     }
 
     private static int steal(int[] nums, int start, int end) {
-        int t1 = 0;
-        int t2 = 0;
+        // int t1 = 0;
+        // int t2 = 0;
 
-        for (int i = start; i <= end; i++) {
-            int temp = t1;
-            int current = nums[i];
-            t1 = Math.max(current + t2, t1);
-            t2 = temp;
+        // for (int i = start; i <= end; i++) {
+        //     int temp = t1;
+        //     int current = nums[i];
+        //     t1 = Math.max(current + t2, t1);
+        //     t2 = temp;
+        // }
+
+        // return t1;
+
+        int[] dp = new int[end+1];
+        dp[start]=nums[start];
+        dp[start+1]= Math.max(nums[start],nums[start+1]);
+
+        for(int i=start+2;i<end+1;i++){
+            dp[i]= Math.max(dp[i-1], dp[i-2]+nums[i]);
         }
 
-        return t1;
+        return dp[end];
     }
 }
