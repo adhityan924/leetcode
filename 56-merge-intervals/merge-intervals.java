@@ -1,6 +1,6 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(a->a[0]));
         LinkedList<int[]> merged = new LinkedList<>();
         for (int[] interval : intervals) {
             if (merged.isEmpty() || merged.getLast()[1] < interval[0]) {
@@ -16,3 +16,4 @@ class Solution {
         return merged.toArray(new int[merged.size()][]);
     }
 }
+
