@@ -3,21 +3,20 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        smap = {}
-        tmap = {}
-        for ch in s:
-            if ch in smap:
-                smap[ch] += 1
-            else:
-                smap[ch] = 1
+        s_map = {}
+        t_map = {}
 
-        for ch in t:
-            if ch in tmap:
-                tmap[ch] += 1
-            else:
-                tmap[ch] = 1
+        for c in s:
+            if c not in s_map:
+                s_map[c]=0
+            s_map[c]+=1
 
-        if smap == tmap:
+        for c in t:
+            if c not in t_map:
+                t_map[c]=0
+            t_map[c]+=1
+        
+        if s_map == t_map:
             return True
         else:
             return False
